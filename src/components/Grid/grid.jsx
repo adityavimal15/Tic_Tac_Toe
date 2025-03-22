@@ -10,15 +10,19 @@ function Grid({ numberOfCards, onQuit }) {
   const [winner, setWinner] = useState(null);
 
   function play(index) {
-    if (board[index] !== "") return; // Prevent overwriting moves
+    if (board[index] !== "" || winner) return; // Prevent moves after win
 
-    board[index] = turn ? "O" : "X";
-    const win = isWinner(board, turn ? "O" : "X");
+    const newBoard = [...board]; 
+    newBoard[index] = turn ? "O" : "X";
+    const win = isWinner(newBoard, turn ? "O" : "X");
 
     if (win) {
       setWinner(win);
+    } else if (newBoard.every(cell => cell !== "")) {
+      setWinner("Draw"); // If all cells are filled and no winner
     }
-    setBoard([...board]);
+
+    setBoard(newBoard);
     setTurn(!turn);
   }
 
@@ -30,11 +34,11 @@ function Grid({ numberOfCards, onQuit }) {
 
   return (
     <div className="grid-wrapper">
-      <BackgroundVideo videoSrc="Background2.mp4"></BackgroundVideo>
+      <BackgroundVideo videoSrc="Background2.mp4" />
       <div className="grid">
         {board.map((el, idx) => (
           <Card
-            gameEnd={!!winner}
+            gameEnd={Boolean(winner)}
             key={idx}
             onPlay={play}
             player={el}
@@ -44,14 +48,20 @@ function Grid({ numberOfCards, onQuit }) {
       </div>
       {winner && (
         <>
-          <h1 className="turn-highlight"> Winner is {winner}</h1>
+          <h1 className="turn-highlight">
+            {winner === "Draw" ? "It's a Draw!" : `Winner is ${winner}`}
+          </h1>
           <button className="reset" onClick={reset}>Reset Game</button>
           <button className="quit" onClick={onQuit}>QUIT</button>
         </>
       )}
-      <h1 className="turn-highlight current">Current turn: {turn ? "O" : "X"}</h1>
+      
+      {!winner && (
+        <h1 className="turn-highlight current">Current turn: {turn ? "O" : "X"}</h1>
+      )}
     </div>
   );
 }
 
 export default Grid;
+
