@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*{
+    margin: 0%;
+    padding: 0%;
+}
+.Opening{
+    /* background:black; */
+    /* background: url('Background1.mp4'); */
+    color: Red;
+    height: 96.79vh;
+    font-family: kanit;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    animation: background 5s linear forwards;
+}
+
+.Opening11{
+    color: white;
+    text-shadow: 0px 0px 25px white;
+    position: relative;
+    /* width: 100%; */
+    z-index: 1;
+    padding: 1%;
+    border-radius: 15px;
+    width: 520px;
+    overflow: hidden;
+    background-color: blue;
+    font-weight: 600;
+    font-size: 2rem;
+    margin-bottom: 5%;
+}
+/* .Opening11:before{
+    content: '';
+    position: absolute;
+    left: 110%;
+    width: 120%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 0, 0, 0) 5%, rgba(255, 0, 0, 0) 100%);
+    animation: animate 1s linear forwards;
+    animation-delay: 0s;
+} */
+.Opening12{
+    border: 2px solid blue;
+    height: 10px;
+    width: 520px;
+    background-color:white;
+    overflow: hidden;
+}
+.progress-bar{
+    background-color:blue;
+    height: 10px;
+    /* padding: 0px; */
+    transform: translateY(-5.5px);
+    animation: progress 5s linear forwards;
+}
+.Opening13{
+    color: blue;
+}
+
+/* @keyframes animate{
+    0%{
+        left:-20%;
+    }
+    100%{
+        left: 110%;
+    }
+} */
+@keyframes progress{
+    0%{
+        width: 0%;
+    }
+    100%{
+        width: 100%;
+    }
+}
+@keyframes background{
+    0%{
+        background: url('Background1.mp4');
+    }
+    100%{
+        background:url('Background2.mp4');
+    }
+}
+
+@media screen and (max-width:400px){
+    .Opening11{
+         width: 300px;
+         font-size: 1.15rem;
+    }
+    .Opening12{
+        height: 10px;
+        width: 300px;
+        overflow: hidden;
+    }
+    .progress-bar{
+        /* height: 10px; */
+        transform: translateY(-15.5px);
+    }
+}
+
+@media screen and (max-width:450px){
+    .Opening11{
+        width: 300px;
+        font-size: 1.15rem;
+   }
+   .Opening12{
+       height: 10px;
+       width: 300px;
+   }
+   .progress-bar{
+    height: 10px;
+    transform: translateY(-9px);
+}
+}
+
+
